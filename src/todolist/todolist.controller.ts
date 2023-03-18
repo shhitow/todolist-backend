@@ -11,7 +11,6 @@ import {
 } from '@nestjs/common';
 import path from 'path';
 import { readFileSync, writeFileSync } from 'fs';
-import fs from 'fs';
 
 @Controller('todolist')
 export class TodolistController {
@@ -25,7 +24,7 @@ export class TodolistController {
 
   @Get()
   getAll(): string {
-    const data = fs.readFileSync('./todos.json', 'utf8');
+    const data = readFileSync('./todos.json', 'utf8');
     const jsonData = JSON.parse(data);
     return jsonData;
   }
